@@ -1,0 +1,5 @@
+# Playwright MCP 임시 로그/스냅샷
+.playwright-mcp/
+
+# Claude Code 개인 설정
+.claude/settings.local.json
