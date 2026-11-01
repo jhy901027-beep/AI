@@ -3,3 +3,9 @@
 
 # Claude Code 개인 설정
 .claude/settings.local.json
+
+# 개인 자료 (청첩장 등) - private-files 저장소에서 관리
+사진_*/
+청첩장_*
+청첩장정보_*
+모바일청첩장_*

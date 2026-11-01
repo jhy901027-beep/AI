@@ -126,8 +126,7 @@
       aspect-ratio: 1; border-radius: var(--radius); display: grid; place-items: center;
       font-size: 4rem; position: relative; overflow: hidden; cursor: pointer;
       transition: transform 0.2s;
-    }
-    .photo:hover { transform: scale(1.04); }
+    }    .photo:hover { transform: scale(1.04); }
     .photo span {
       position: absolute; bottom: 0; left: 0; right: 0; padding: 10px;
       background: linear-gradient(transparent, rgba(0,0,0,0.45));
@@ -187,40 +186,51 @@
     </div>
     <div class="dog-art" aria-hidden="true">
       <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-        <!-- 짧은 꼬리 -->
-        <path class="tail" d="M300 262 Q322 248 316 232" stroke="#d9a873" stroke-width="18" fill="none" stroke-linecap="round"/>
-        <!-- 다부진 몸 -->
-        <ellipse cx="215" cy="295" rx="105" ry="68" fill="#e3b685"/>
-        <ellipse cx="200" cy="300" rx="55" ry="45" fill="#f3dcc0"/>
-        <!-- 짧은 다리 -->
-        <rect x="130" y="325" width="40" height="42" rx="18" fill="#e3b685"/>
-        <rect x="255" y="325" width="40" height="42" rx="18" fill="#e3b685"/>
-        <!-- 박쥐 귀 -->
-        <path d="M112 150 L92 52 Q96 40 108 46 L172 112 Z" fill="#d9a873"/>
-        <path d="M118 140 L104 70 L158 116 Z" fill="#f2b9a8"/>
-        <path d="M268 150 L288 52 Q284 40 272 46 L208 112 Z" fill="#d9a873"/>
-        <path d="M262 140 L276 70 L222 116 Z" fill="#f2b9a8"/>
-        <!-- 넓적한 얼굴 -->
-        <ellipse cx="190" cy="178" rx="98" ry="86" fill="#e3b685"/>
-        <!-- 검은 주둥이 -->
-        <ellipse cx="190" cy="206" rx="50" ry="38" fill="#4a3a33"/>
-        <!-- 이마 주름 -->
-        <path d="M168 120 Q190 112 212 120" stroke="#c9945f" stroke-width="4" fill="none" stroke-linecap="round"/>
-        <path d="M174 133 Q190 127 206 133" stroke="#c9945f" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <defs>
+          <clipPath id="faceClip"><ellipse cx="190" cy="178" rx="98" ry="86"/></clipPath>
+          <clipPath id="bodyClip"><ellipse cx="215" cy="295" rx="105" ry="68"/></clipPath>
+        </defs>
+        <g stroke="#e3d3bf" stroke-width="3" stroke-linejoin="round">
+          <!-- 짧은 꼬리 (흰색) -->
+          <path class="tail" d="M300 262 Q322 248 316 232" stroke="#efe6d9" stroke-width="18" fill="none" stroke-linecap="round"/>
+          <!-- 다부진 흰 몸 -->
+          <ellipse cx="215" cy="295" rx="105" ry="68" fill="#fbf7f0"/>
+          <!-- 등의 연갈색 하트 무늬 -->
+          <path d="M282 325 C246 303 257 275 282 290 C307 275 318 303 282 325 Z" fill="#d9a066" stroke="none" transform="rotate(-10 282 305)" clip-path="url(#bodyClip)"/>
+          <ellipse cx="200" cy="300" rx="55" ry="45" fill="#fffdf8" stroke="none"/>
+          <!-- 짧은 다리 (흰색) -->
+          <rect x="130" y="325" width="40" height="42" rx="18" fill="#fbf7f0"/>
+          <rect x="255" y="325" width="40" height="42" rx="18" fill="#fbf7f0"/>
+          <!-- 박쥐 귀: 왼쪽은 짙은 갈색, 오른쪽은 흰색 -->
+          <path d="M112 150 L92 52 Q96 40 108 46 L172 112 Z" fill="#5b4034" stroke="#4a3329"/>
+          <path d="M118 140 L104 70 L158 116 Z" fill="#9a7360" stroke="none"/>
+          <path d="M268 150 L288 52 Q284 40 272 46 L208 112 Z" fill="#fbf7f0"/>
+          <path d="M262 140 L276 70 L222 116 Z" fill="#f2b9a8" stroke="none"/>
+          <!-- 넓적한 흰 얼굴 -->
+          <ellipse cx="190" cy="178" rx="98" ry="86" fill="#fbf7f0"/>
+        </g>
+        <!-- 얼굴 무늬 (얼굴 안쪽으로만 보이게 자르기) -->
+        <g clip-path="url(#faceClip)">
+          <!-- 오른쪽 눈 주변 큰 갈색 얼룩 -->
+          <path d="M206 80 Q268 84 292 140 Q300 200 268 236 Q238 214 226 176 Q214 140 206 80 Z" fill="#d9a066"/>
+        </g>
+        <!-- 눈 주위 어두운 테두리 -->
+        <ellipse cx="146" cy="166" rx="25" ry="22" fill="#8c6a58" opacity="0.5"/>
+        <ellipse cx="234" cy="166" rx="25" ry="22" fill="#6b4430" opacity="0.5"/>
+        <!-- 흰 주둥이 -->
+        <ellipse cx="190" cy="206" rx="50" ry="38" fill="#f1ece4" stroke="#ddd0bf" stroke-width="3"/>
+        <ellipse cx="190" cy="216" rx="40" ry="26" fill="#d9d2c9" opacity="0.55"/>
         <!-- 큰 눈 -->
-        <circle cx="146" cy="166" r="17" fill="#3b2f2a"/>
-        <circle cx="234" cy="166" r="17" fill="#3b2f2a"/>
+        <circle cx="146" cy="166" r="17" fill="#2e2420"/>
+        <circle cx="234" cy="166" r="17" fill="#2e2420"/>
         <circle cx="152" cy="160" r="5.5" fill="#fff"/>
         <circle cx="240" cy="160" r="5.5" fill="#fff"/>
-        <!-- 납작한 코 -->
+        <!-- 납작한 검은 코 -->
         <ellipse cx="190" cy="190" rx="18" ry="11" fill="#1f1714"/>
         <ellipse cx="184" cy="187" rx="5" ry="3" fill="#6b5a52"/>
         <!-- 입과 축 처진 볼살 -->
-        <path d="M190 201 L190 212 M190 212 Q174 230 156 220 M190 212 Q206 230 224 220" stroke="#1f1714" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M190 201 L190 212 M190 212 Q174 230 156 220 M190 212 Q206 230 224 220" stroke="#3b2f2a" stroke-width="4" fill="none" stroke-linecap="round"/>
         <path d="M182 226 Q190 244 198 226 Z" fill="#f28b82"/>
-        <!-- 볼 -->
-        <circle cx="118" cy="204" r="12" fill="#f2a593" opacity="0.6"/>
-        <circle cx="262" cy="204" r="12" fill="#f2a593" opacity="0.6"/>
         <!-- 목걸이 -->
         <path d="M120 250 Q190 282 260 250" stroke="#e8925b" stroke-width="13" fill="none" stroke-linecap="round"/>
         <circle cx="190" cy="273" r="12" fill="#ffd166"/>
